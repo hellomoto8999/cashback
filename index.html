@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ConfrontaCashback — Il cashback vero, non un buono sconto</title>
+  <meta name="description" content="Confronta il cashback reale su acquisti e gift card di TopCashback, BuyOn, Bestshopping, BitCashback, LetyShops, Widilo e Woolsocks su oltre 3.600 negozi e 270 gift card." />
+  <meta name="theme-color" content="#eef0f4" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0e1216" media="(prefers-color-scheme: dark)" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="preload" href="fonts/bodoni-normal-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <script src="theme.js?v=20261102b"></script>
+  <link rel="stylesheet" href="style.css?v=20261102b" />
+</head>
+<body>
+  <a class="skip" href="#tabella">Salta alla tabella</a>
+
+  <header class="topbar" id="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="./" aria-label="ConfrontaCashback, home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 64 64" fill="none">
+            <rect width="64" height="64" rx="14" fill="currentColor"/>
+            <path d="M44 24a14 14 0 1 0 3 14" stroke="#D9FF5A" stroke-width="6" stroke-linecap="round"/>
+            <path d="M47 14v12H35" stroke="#D9FF5A" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <span class="brand-text"><span>confronta</span><strong>cashback</strong></span>
+      </a>
+      <div class="topbar-right">
+        <p class="topbar-meta"><span class="live-dot" aria-hidden="true"></span><span id="updated">dati live</span></p>
+        <div class="theme-switch" role="group" aria-label="Tema">
+          <button type="button" class="theme-btn" data-theme-choice="light" aria-label="Tema chiaro" aria-pressed="false" title="Tema chiaro">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </button>
+          <button type="button" class="theme-btn" data-theme-choice="system" aria-label="Tema di sistema" aria-pressed="true" title="Segui il sistema">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 4a8 8 0 0 0 0 16z" fill="currentColor"/></svg>
+          </button>
+          <button type="button" class="theme-btn" data-theme-choice="dark" aria-label="Tema scuro" aria-pressed="false" title="Tema scuro">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero wrap">
+      <div class="hero-copy">
+        <h1>Il cashback vero,<br /><span class="h1-accent">non un buono sconto.</span></h1>
+        <p class="lede">
+          Rimborsi reali su acquisti e gift card. Confronta in un colpo d'occhio
+          TopCashback, BuyOn, Bestshopping, BitCashback, LetyShops, Widilo e Woolsocks
+          su oltre 3.600 negozi e 270 gift card — e scegli sempre il rimborso più alto.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#tabella">
+            Confronta i rimborsi
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a class="btn btn-ghost" href="#come-funziona">Come funziona</a>
+          <a class="btn btn-ghost" href="faq.html">FAQ</a>
+        </div>
+        <p class="hero-note">Nessuna registrazione. Solo percentuali a confronto.</p>
+      </div>
+
+      <aside class="receipt" aria-label="Alcuni rimborsi cashback">
+        <div class="receipt-top">
+          <span>Alcuni rimborsi</span>
+          <span id="receipt-date">—</span>
+        </div>
+        <ol class="top-offers" id="top-offers"></ol>
+        <div class="receipt-foot">
+          <span id="receipt-count">—</span>
+          <span>aggiornato ogni notte</span>
+        </div>
+      </aside>
+    </section>
+
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker-track" id="ticker"></div>
+    </div>
+
+    <section class="stats wrap" id="stats" aria-label="Numeri del confronto"></section>
+
+    <section class="how wrap" id="come-funziona">
+      <h2 class="sr-only">Come funziona</h2>
+      <ol class="steps">
+        <li>
+          <span class="step-num">01</span>
+          <h3>Cerca il negozio</h3>
+          <p>Filtra per categoria o scrivi il nome. La tabella mostra subito chi offre cashback e quanto.</p>
+        </li>
+        <li>
+          <span class="step-num">02</span>
+          <h3>Confronta le sette piattaforme</h3>
+          <p>La percentuale migliore di ogni riga è evidenziata. A parità di acquisto, la differenza è denaro.</p>
+        </li>
+        <li>
+          <span class="step-num">03</span>
+          <h3>Acquista dal link giusto</h3>
+          <p>Apri il negozio dalla piattaforma scelta, completa l'ordine e il rimborso arriva sul tuo conto. Disattiva eventuali adblocker!</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="table-section" id="tabella">
+      <div class="wrap">
+        <p id="giftcard-note" class="giftcard-note">
+          <strong>Gift card:</strong> il cashback si applica all'acquisto del buono
+          (sconto immediato o rimborso sul buono), non alla spesa che farai con la card.
+        </p>
+
+        <div class="toolbar" id="toolbar">
+          <div class="field field-search">
+            <label for="q">Cerca un negozio o una gift card</label>
+            <div class="input-wrap">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M16 16l4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+              <input id="q" type="search" placeholder="Cerca un negozio o una gift card…" autocomplete="off" spellcheck="false" />
+            </div>
+          </div>
+          <div class="field">
+            <label for="category">Categoria</label>
+            <select id="category"><option value="">Tutte le categorie</option></select>
+          </div>
+          <div class="field">
+            <label for="sort">Ordina per</label>
+            <select id="sort">
+              <option value="category">Categoria, poi nome</option>
+              <option value="name">Nome (A–Z)</option>
+              <option value="best-desc">Cashback più alto</option>
+              <option value="best-asc">Cashback più basso</option>
+              <option value="count">Più piattaforme</option>
+            </select>
+          </div>
+          <div class="platforms">
+            <span class="field-label">Piattaforme</span>
+            <div id="platform-toggles" class="chips"></div>
+          </div>
+        </div>
+
+        <div class="result-bar">
+          <p id="count" aria-live="polite"></p>
+          <p class="result-hint" id="result-hint">Clicca una percentuale per aprire l'offerta sulla piattaforma.</p>
+        </div>
+
+        <div class="table-panel" id="table-panel">
+          <table id="table">
+            <caption class="sr-only">Confronto del cashback su acquisti e gift card</caption>
+            <thead id="thead"></thead>
+            <tbody id="tbody"></tbody>
+          </table>
+          <p id="empty" class="empty" hidden>Nessuna offerta trovata. Prova a cambiare ricerca o categoria.</p>
+        </div>
+        <div id="load-more-wrap" class="load-more-wrap" hidden>
+          <button type="button" class="btn btn-ghost" id="load-more">Mostra altri</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <div class="footer-brand">
+        <span class="brand-text"><span>confronta</span><strong>cashback</strong></span>
+        <p>Il confronto indipendente dei rimborsi su acquisti e gift card.</p>
+      </div>
+      <p class="footer-note">
+        <strong>Nota:</strong> le percentuali di cashback cambiano spesso e dipendono da promozioni,
+        categorie e condizioni del singolo negozio. Verifica sempre i termini sulla piattaforma
+        prima di acquistare. Questo sito non è affiliato ai marchi citati.
+      </p>
+      <p id="generated" class="footer-meta"></p>
+    </div>
+  </footer>
+
+  <script src="data.js" onerror="window.__noDataJs=true"></script>
+  <script src="app.js?v=20261102c"></script>
+</body>
+</html>
